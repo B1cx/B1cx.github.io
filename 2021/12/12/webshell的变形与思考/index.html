@@ -88,7 +88,7 @@
 <meta property="og:locale">
 <meta property="og:image" content="https://blcx.oss-cn-shanghai.aliyuncs.com//blog/QQ%E5%9B%BE%E7%89%8720211212180226.png">
 <meta property="article:published_time" content="2021-12-12T08:10:26.000Z">
-<meta property="article:modified_time" content="2021-12-12T11:22:03.089Z">
+<meta property="article:modified_time" content="2021-12-12T16:25:00.802Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://blcx.oss-cn-shanghai.aliyuncs.com//blog/QQ%E5%9B%BE%E7%89%8720211212180226.png">
 
@@ -182,7 +182,7 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/%20" rel="section">
+          <a href="/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
@@ -192,7 +192,7 @@
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/archives/%20" rel="section">
+          <a href="/archives/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
@@ -303,6 +303,15 @@
         <h1 id="webshell-介绍"><a href="#webshell-介绍" class="headerlink" title="webshell 介绍"></a>webshell 介绍</h1><p><code>webshell</code> 是以常见的编程语言(<code>PHP</code>,<code>JAVA</code>,<code>ASP</code>,<code>ASPX</code>或者<code>cgi</code>)编写的网页文件，最初的目的是为了方便网站管理、服务器管理、权限管理等，使用方法简单，只需写短短几行代码，并且通过网址访问就可进行日常操作，极大的方便了使用者对网站和服务器的管理。因为其方便小巧的特性，如今转变成恶意后门来使用，已达控制网站服务器的目的.</p>
 <h1 id="webshell-种类"><a href="#webshell-种类" class="headerlink" title="webshell 种类"></a>webshell 种类</h1><p>p牛在19年kcon大会上的议题<code>PHP动态特性的捕捉与逃逸</code>中，把webshell分成了如下几类：</p>
 <p><img src="https://blcx.oss-cn-shanghai.aliyuncs.com//blog/QQ%E5%9B%BE%E7%89%8720211212180226.png" alt="QQ图片20211212180226"></p>
+<span id="more"></span>
+
+<h2 id="PHP动态特性的捕捉与逃逸"><a href="#PHP动态特性的捕捉与逃逸" class="headerlink" title="PHP动态特性的捕捉与逃逸"></a>PHP动态特性的捕捉与逃逸</h2><h3 id="直接型"><a href="#直接型" class="headerlink" title="直接型"></a>直接型</h3><p>直接型言简意赅，直接通过http请求传递要执行的代码</p>
+<h3 id="回调型"><a href="#回调型" class="headerlink" title="回调型"></a>回调型</h3><p>利用回调函数如<code>call_user_func</code>、<code>array_map</code>等,这里就体现了<code>php</code>的灵活，一段不确定功能的代码，变量值的改变可以导致这段代码发生功能上的变化。</p>
+<h3 id="变形型"><a href="#变形型" class="headerlink" title="变形型"></a>变形型</h3><p>对webshell中的一些<code>变量名</code>、<code>恶意代码</code>，进行混淆、加密、压缩等操作，以达到被查杀的目的。</p>
+<h3 id="命令型"><a href="#命令型" class="headerlink" title="命令型"></a>命令型</h3><p>也很好理解，直接通过popen和系统进程通信执行命令，常见的如<code>system</code>、<code>shell_exec</code>、<code>反引号</code>等等</p>
+<h3 id="包含型"><a href="#包含型" class="headerlink" title="包含型"></a>包含型</h3><p>包含型可能是最不容易被查杀的手段，至少静态查杀没有有效的方法，通过包含恶意代码执行的方式将结果带出，日常开发中也有很多地方用到包含的函数如<code>require</code>、<code>include_once</code>等等，从开发的角度看，包含型的webshell没有什么明显的特征，只能从流量侧进行查杀。</p>
+<h3 id="技巧型"><a href="#技巧型" class="headerlink" title="技巧型"></a>技巧型</h3><p>利用对php的一些特性执行恶意代码，如<code>preg_replace \e</code> 执行任意代码、或者利用php的<code>base64_decode</code>函数的容错性。</p>
+<h4 id="针对回调型webshell的检测"><a href="#针对回调型webshell的检测" class="headerlink" title="针对回调型webshell的检测"></a>针对回调型webshell的检测</h4><p>针对回调函数的检测，</p>
 
       
     </div>
@@ -410,7 +419,7 @@
             
               <div class="site-state-item site-state-posts">
               
-                <a href="/archives/%20%7C%7C%20archive">
+                <a href="/archives/%7C%7Carchive">
               
                   <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">posts</span>
@@ -449,7 +458,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#webshell-%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">webshell 介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#webshell-%E7%A7%8D%E7%B1%BB"><span class="nav-number">2.</span> <span class="nav-text">webshell 种类</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#webshell-%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">webshell 介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#webshell-%E7%A7%8D%E7%B1%BB"><span class="nav-number">2.</span> <span class="nav-text">webshell 种类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#PHP%E5%8A%A8%E6%80%81%E7%89%B9%E6%80%A7%E7%9A%84%E6%8D%95%E6%8D%89%E4%B8%8E%E9%80%83%E9%80%B8"><span class="nav-number">2.1.</span> <span class="nav-text">PHP动态特性的捕捉与逃逸</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B4%E6%8E%A5%E5%9E%8B"><span class="nav-number">2.1.1.</span> <span class="nav-text">直接型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9E%E8%B0%83%E5%9E%8B"><span class="nav-number">2.1.2.</span> <span class="nav-text">回调型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%98%E5%BD%A2%E5%9E%8B"><span class="nav-number">2.1.3.</span> <span class="nav-text">变形型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%91%BD%E4%BB%A4%E5%9E%8B"><span class="nav-number">2.1.4.</span> <span class="nav-text">命令型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8C%85%E5%90%AB%E5%9E%8B"><span class="nav-number">2.1.5.</span> <span class="nav-text">包含型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8A%80%E5%B7%A7%E5%9E%8B"><span class="nav-number">2.1.6.</span> <span class="nav-text">技巧型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%92%88%E5%AF%B9%E5%9B%9E%E8%B0%83%E5%9E%8Bwebshell%E7%9A%84%E6%A3%80%E6%B5%8B"><span class="nav-number">2.1.6.1.</span> <span class="nav-text">针对回调型webshell的检测</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>

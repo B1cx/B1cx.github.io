@@ -177,7 +177,7 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/%20" rel="section">
+          <a href="/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
@@ -187,7 +187,7 @@
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/archives/%20" rel="section">
+          <a href="/archives/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
@@ -298,12 +298,16 @@
 
       
         
-          
-            <h1 id="webshell-介绍"><a href="#webshell-介绍" class="headerlink" title="webshell 介绍"></a>webshell 介绍</h1><p><code>webshell</code> 是以常见的编程语言(<code>PHP</code>,<code>JAVA</code>,<code>ASP</code>,<code>ASPX</code>或者<code>cgi</code>)编写的网页文件，最初的目的是为了方便网站管理、服务器管理、权限管理等，使用方法简单，只需写短短几行代码，并且通过网址访问就可进行日常操作，极大的方便了使用者对网站和服务器的管理。因为其方便小巧的特性，如今转变成恶意后门来使用，已达控制网站服务器的目的.</p>
+          <h1 id="webshell-介绍"><a href="#webshell-介绍" class="headerlink" title="webshell 介绍"></a>webshell 介绍</h1><p><code>webshell</code> 是以常见的编程语言(<code>PHP</code>,<code>JAVA</code>,<code>ASP</code>,<code>ASPX</code>或者<code>cgi</code>)编写的网页文件，最初的目的是为了方便网站管理、服务器管理、权限管理等，使用方法简单，只需写短短几行代码，并且通过网址访问就可进行日常操作，极大的方便了使用者对网站和服务器的管理。因为其方便小巧的特性，如今转变成恶意后门来使用，已达控制网站服务器的目的.</p>
 <h1 id="webshell-种类"><a href="#webshell-种类" class="headerlink" title="webshell 种类"></a>webshell 种类</h1><p>p牛在19年kcon大会上的议题<code>PHP动态特性的捕捉与逃逸</code>中，把webshell分成了如下几类：</p>
 <p><img src="https://blcx.oss-cn-shanghai.aliyuncs.com//blog/QQ%E5%9B%BE%E7%89%8720211212180226.png" alt="QQ图片20211212180226"></p>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2021/12/12/webshell%E7%9A%84%E5%8F%98%E5%BD%A2%E4%B8%8E%E6%80%9D%E8%80%83/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -420,224 +424,20 @@
 
       
         
-          
-            <h1 id="汇编部分"><a href="#汇编部分" class="headerlink" title="汇编部分"></a>汇编部分</h1><h2 id="进制"><a href="#进制" class="headerlink" title="进制"></a>进制</h2><p>进制的定义                                </p>
+          <h1 id="汇编部分"><a href="#汇编部分" class="headerlink" title="汇编部分"></a>汇编部分</h1><h2 id="进制"><a href="#进制" class="headerlink" title="进制"></a>进制</h2><p>进制的定义                                </p>
 <p>十进制的定义：由十个符号组成，分别是0 1 2 3 4 5 6 7 8 9 逢十进一。                            </p>
 <p>九进制的定义：由九个符号组成，分别是0 1 2 3 4 5 6 7 8 逢九进一。                            </p>
 <p>十六进制的定义：由十六个符号组成，分别是0 1 2 3 4 5 6 7 8 9 A B C D E F        </p>
 <blockquote>
 <p>进制运算的本质是查表</p>
 </blockquote>
-<p>例：</p>
-<p><img src="https://note.youdao.com/yws/public/resource/dc9b09acad5771d68d3997111f970821/WEBRESOURCEd42fdcc5446a92b5128a3fe9e63a8674?ynotemdtimestamp=1639296124101" alt="image.png"></p>
-<h2 id="通用寄存器"><a href="#通用寄存器" class="headerlink" title="通用寄存器"></a>通用寄存器</h2><p>在x86 32位系统的情况下，常见的寄存器如下</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>寄存器</th>
-<th></th>
-<th>编号（二进制）</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>32位</td>
-<td>16位</td>
-<td>8位</td>
-<td></td>
-</tr>
-<tr>
-<td>EAX</td>
-<td>AX</td>
-<td>AL</td>
-<td>000</td>
-</tr>
-<tr>
-<td>ECX</td>
-<td>CX</td>
-<td>CL</td>
-<td>001</td>
-</tr>
-<tr>
-<td>EDX</td>
-<td>DX</td>
-<td>DL</td>
-<td>010</td>
-</tr>
-<tr>
-<td>EBX</td>
-<td>BX</td>
-<td>BL</td>
-<td>011</td>
-</tr>
-<tr>
-<td>ESP</td>
-<td>SP</td>
-<td>AH</td>
-<td>100</td>
-</tr>
-<tr>
-<td>EBP</td>
-<td>BP</td>
-<td>CH</td>
-<td>101</td>
-</tr>
-<tr>
-<td>ESI</td>
-<td>SI</td>
-<td>DH</td>
-<td>110</td>
-</tr>
-<tr>
-<td>EDI</td>
-<td>DI</td>
-<td>BH</td>
-<td>111</td>
-</tr>
-</tbody></table>
-<p>他们之间的关系如下：</p>
-<p>所有的寄存器都可以看作是一个容器，当然，特定时候有特殊的用法</p>
-<p>32位通用寄存器的指定用途如下：</p>
-<table>
-<thead>
-<tr>
-<th>寄存器</th>
-<th>主要用途</th>
-<th>编号</th>
-<th>储存数据范围</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>EAX</td>
-<td>累加器</td>
-<td>0</td>
-<td>0 - 0xFFFFFFFF</td>
-</tr>
-<tr>
-<td>ECX</td>
-<td>计数</td>
-<td>1</td>
-<td>0 - 0xFFFFFFFF</td>
-</tr>
-<tr>
-<td>EDX</td>
-<td>I/O指针</td>
-<td>2</td>
-<td>0 - 0xFFFFFFFF</td>
-</tr>
-<tr>
-<td>EBX</td>
-<td>DS段的数据指针</td>
-<td>3</td>
-<td>0 - 0xFFFFFFFF</td>
-</tr>
-<tr>
-<td>ESP</td>
-<td>栈顶指针</td>
-<td>4</td>
-<td>0 - 0xFFFFFFFF</td>
-</tr>
-<tr>
-<td>EBP</td>
-<td>栈底指针</td>
-<td>5</td>
-<td>0 - 0xFFFFFFFF</td>
-</tr>
-<tr>
-<td>ESI</td>
-<td>字符串操作的源指针,SS段的数据指针</td>
-<td>6</td>
-<td>0 - 0xFFFFFFFF</td>
-</tr>
-<tr>
-<td>EDI</td>
-<td>字符串操作的目标指针,ES段的数据指针</td>
-<td>7</td>
-<td>0 - 0xFFFFFFFF</td>
-</tr>
-</tbody></table>
-<h2 id="标志寄存器"><a href="#标志寄存器" class="headerlink" title="标志寄存器"></a>标志寄存器</h2><p>标志寄存器是一些特殊的寄存器，用来存放逻辑运算的结果标志，构成如下图：</p>
-<p><img src="https://note.youdao.com/yws/public/resource/dc9b09acad5771d68d3997111f970821/459635FDEF3741818E366EA21A986912?ynotemdtimestamp=1639296124101" alt="image"></p>
-<p>几个比较重要的标志寄存器作用：</p>
-<p>1、进位标志CF(Carry Flag):如果运算结果的最高位产生了一个进位或借位，那么，其值为1，否则其值为0。    </p>
-<p>2、奇偶标志PF(Parity Flag)：奇偶标志PF用于反映运算结果中“1”的个数的奇偶性,如果“1”的个数为偶数，则PF的值为1，否则其值为0。                            </p>
-<p>3、辅助进位标志AF(Auxiliary Carry Flag):</p>
-<blockquote>
-<p>在发生下列情况时，辅助进位标志AF的值被置为1，否则其值为0：                        </p>
-</blockquote>
-<blockquote>
-<p>(1)、在字操作时，发生低字节向高字节进位或借位时；                        </p>
-</blockquote>
-<blockquote>
-<p>(2)、在字节操作时，发生低4位向高4位进位或借位时。    </p>
-</blockquote>
-<p>4、零标志ZF(Zero Flag)：零标志ZF用来反映运算结果是否为0。<br>如果运算结果为0，则其值为1，否则其值为0。在判断运算结果是否为0时，可使用此标志位。        </p>
-<p>5、符号标志SF(Sign Flag)：符号标志SF用来反映运算结果的符号位，它与运算结果的最高位相同。</p>
-<p>6、溢出标志OF(Overflow Flag)：溢出标志OF用于反映有符号数加减运算所得结果是否溢出。            如果运算结果超过当前运算位数所能表示的范围，则称为溢出，OF的值被置为1，否则，OF的值被清为0。</p>
-<h2 id="寄存器与内存的关系"><a href="#寄存器与内存的关系" class="headerlink" title="寄存器与内存的关系"></a>寄存器与内存的关系</h2><blockquote>
-<p>寄存器位于CPU内部，执行速度快，但比较贵。    </p>
-</blockquote>
-<blockquote>
-<p>内存速度相对较慢，但成本较低，所以可以做的很大。</p>
-</blockquote>
-<blockquote>
-<p>寄存器和内存没有本质区别，都是用于存储数据的容器，都是定宽的。</p>
-</blockquote>
-<blockquote>
-<p>寄存器常用的有8个：EAX、ECX、EDX、EBX、ESP、EBP、ESI、EDI。</p>
-</blockquote>
-<blockquote>
-<p>计算机中的几个常用计量单位：BYTE WORD DWORD                        </p>
-</blockquote>
-<blockquote>
-<p>内存的数量特别庞大，无法每个内存单元都起一个名字，所以用编号来代替，我们称计算机CPU是32位或者64位，主要指的就是内存编号的宽度，而不是寄存器的宽度。</p>
-</blockquote>
-<p>内存编号如下图：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">0x00000000	</span><br><span class="line">0x00000001	</span><br><span class="line">0x00000002	</span><br><span class="line">....	</span><br><span class="line">....	</span><br><span class="line">....	</span><br><span class="line">....	</span><br><span class="line">....	</span><br><span class="line">....	</span><br><span class="line">0xFFFFFFFF	</span><br></pre></td></tr></table></figure>
-
-<p>32位计算机的编号最大是32位，也就是32个1 换成16进制为FFFFFFFF，也就是说，32位计算机内存寻址的最大范围是FFFFFFFF+1                             </p>
-<p>内存的单位是字节，那内存中能存储的信息最多为：FFFFFFFF+1 字节  即4G，这也是为什么我们在一个XP的系统上面如果物理内存超过4G是没有意义的原因。    </p>
-<p>但是不是所有的32位计算机最多识别的内存为4g，如果装了某种驱动或者其他情况，可以超过4g。</p>
-<h2 id="堆栈"><a href="#堆栈" class="headerlink" title="堆栈"></a>堆栈</h2><p>堆栈优点:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">堆栈的优点：临时存储大量的数据，便于查找.</span><br></pre></td></tr></table></figure>
-
-<p>什么是堆栈:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">1、BASE,TOP是2个32位的通用寄存器，里面存储的是内存单元编号(内存地址).</span><br><span class="line"></span><br><span class="line">2、BASE里面存储了一个地址，记录的起始地址.</span><br><span class="line"></span><br><span class="line">3、TOP里面也存储了一个地址，记录的是结束的地址.</span><br><span class="line"></span><br><span class="line">4、存入数据的时候，TOP的值减4(为方便演示，每次存取都是4个字节)</span><br><span class="line"></span><br><span class="line">5、释放数据的时候，TOP的值加4(为方便演示，每次存取都是4个字节)</span><br><span class="line"></span><br><span class="line">6、如果要读取中间的某个数据的时候可以通过TOP 或者 BASE 加上偏移的方式去读取</span><br><span class="line"></span><br><span class="line">7、这种内存的读写方式有个学名：堆栈</span><br></pre></td></tr></table></figure>
-<p>根据上面的定义,不用push和pop一样可以实现堆栈的功能（取数据和存数据）</p>
-<h2 id="汇编指令"><a href="#汇编指令" class="headerlink" title="汇编指令"></a>汇编指令</h2><p>在x86 32位系统的环境下，常见汇编指令如下：</p>
-<h3 id="MOV-指令0x00000000"><a href="#MOV-指令0x00000000" class="headerlink" title="MOV 指令0x00000000"></a>MOV 指令0x00000000</h3><p>0x00000001<br>0x00000002<br>….<br>….<br>….<br>….<br>….<br>….<br>0xFFFFFFFF    </p>
-<h4 id="作用：拷贝源操作数到目标操作数"><a href="#作用：拷贝源操作数到目标操作数" class="headerlink" title="作用：拷贝源操作数到目标操作数"></a>作用：拷贝源操作数到目标操作数</h4><h4 id="用法："><a href="#用法：" class="headerlink" title="用法："></a>用法：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">MOV r/m8,r8 			    r 通用寄存器	</span><br><span class="line"></span><br><span class="line">MOV r/m16,r16				m 代表内存	</span><br><span class="line"></span><br><span class="line">MOV r/m32,r32				imm 代表立即数	</span><br><span class="line"></span><br><span class="line">MOV r8,r/m8			    	r8 代表8位通用寄存器	</span><br><span class="line"></span><br><span class="line">MOV r16,r/m16				m8 代表8位内存	</span><br><span class="line"></span><br><span class="line">MOV r32,r/m32				imm8 代表8位立即数	</span><br><span class="line"></span><br><span class="line">MOV r8, imm8					</span><br><span class="line"></span><br><span class="line">MOV r16, imm16					</span><br><span class="line"></span><br><span class="line">MOV r32, imm32			</span><br></pre></td></tr></table></figure>
-
-<h4 id="往内存中写入数据具体用法如下："><a href="#往内存中写入数据具体用法如下：" class="headerlink" title="往内存中写入数据具体用法如下："></a>往内存中写入数据具体用法如下：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">1、内存格式						</span><br><span class="line">						</span><br><span class="line">		        7	       0			</span><br><span class="line">				[0x00000000]		1、每个内存单元的宽度为8</span><br><span class="line">					...	</span><br><span class="line">					               	2、[编号]称为地址</span><br><span class="line">				    ...		</span><br><span class="line">						            3、地址的作用：当我们想从内存中读取数据或者想向内存中写入数据，首先应该找到要读、写的位置。就像写信要写地址一样。</span><br><span class="line">                [0xFFFFFFFF]		</span><br><span class="line">						</span><br><span class="line">						</span><br><span class="line">2、从指定内存中写入/读取数据						</span><br><span class="line">						</span><br><span class="line">		mov dword ptr ds:[0x0012FF34],0x12345678				</span><br><span class="line">						</span><br><span class="line">		mov eax,dword ptr ds:[0x0012FF34]				</span><br><span class="line">						</span><br><span class="line">		dword ：要读/写多少  此时是4字节   byte == 1字节  word == 2字节				</span><br><span class="line">						</span><br><span class="line">		ptr: Point 代表后面是一个指针 (指针的意思就是里面存的不是普通的值，而是个地址)				</span><br><span class="line">						</span><br><span class="line">		ds：段寄存器 先不用管 记住就行				</span><br><span class="line">						</span><br><span class="line">		0x0012FF34:内存编号，必须是32位的  前面0可以省略				</span><br><span class="line">						</span><br><span class="line">		注意：地址编号不要随便写，因为内存是有保护的，并不是所有的内存都可以直接读写(需要特别处理)				</span><br><span class="line">						</span><br><span class="line">		建议地址编号写成esp的值				</span><br></pre></td></tr></table></figure>
-
-<h3 id="ADD指令"><a href="#ADD指令" class="headerlink" title="ADD指令"></a>ADD指令</h3><h4 id="作用：将源操作数和目标寄存器的值相加并保存到目标寄存器"><a href="#作用：将源操作数和目标寄存器的值相加并保存到目标寄存器" class="headerlink" title="作用：将源操作数和目标寄存器的值相加并保存到目标寄存器"></a>作用：将源操作数和目标寄存器的值相加并保存到目标寄存器</h4><h4 id="用法：-1"><a href="#用法：-1" class="headerlink" title="用法："></a>用法：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">ADD AL, imm8 </span><br><span class="line"></span><br><span class="line">ADD AX, imm16</span><br><span class="line"></span><br><span class="line">ADD EAX, imm32</span><br><span class="line"></span><br><span class="line">ADD r/m8, imm8</span><br><span class="line"></span><br><span class="line">ADD r/m16,imm16</span><br><span class="line"></span><br><span class="line">ADD r/m32,imm32</span><br><span class="line"></span><br><span class="line">ADD r/m16, imm8</span><br><span class="line"></span><br><span class="line">ADD r/m32, imm8</span><br><span class="line"></span><br><span class="line">ADD r/m8, r8</span><br><span class="line"></span><br><span class="line">ADD r/m16, r16</span><br><span class="line"></span><br><span class="line">ADD r/m32, r32</span><br><span class="line"></span><br><span class="line">ADD r8, r/m8</span><br><span class="line"></span><br><span class="line">ADD r16, r/m16</span><br><span class="line"></span><br><span class="line">ADD r32, r/m32</span><br></pre></td></tr></table></figure>
-<h3 id="SUB指令"><a href="#SUB指令" class="headerlink" title="SUB指令"></a>SUB指令</h3><h4 id="作用：将源操作数和目标寄存器的值相减并保存到目标寄存器"><a href="#作用：将源操作数和目标寄存器的值相减并保存到目标寄存器" class="headerlink" title="作用：将源操作数和目标寄存器的值相减并保存到目标寄存器"></a>作用：将源操作数和目标寄存器的值相减并保存到目标寄存器</h4><h4 id="用法"><a href="#用法" class="headerlink" title="用法:"></a>用法:</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">SUB AL, imm8 </span><br><span class="line"></span><br><span class="line">SUB AX, imm16</span><br><span class="line"></span><br><span class="line">SUB EAX, imm32</span><br><span class="line"></span><br><span class="line">SUB r/m8, imm8</span><br><span class="line"></span><br><span class="line">SUB r/m16,imm16</span><br><span class="line"></span><br><span class="line">SUB r/m32,imm32</span><br><span class="line"></span><br><span class="line">SUB r/m16, imm8</span><br><span class="line"></span><br><span class="line">SUB r/m32, imm8</span><br><span class="line"></span><br><span class="line">SUB r/m8, r8</span><br><span class="line"></span><br><span class="line">SUB r/m16, r16</span><br><span class="line"></span><br><span class="line">SUB r/m32, r32</span><br><span class="line"></span><br><span class="line">SUB r8, r/m8</span><br><span class="line"></span><br><span class="line">SUB r16, r/m16</span><br><span class="line"></span><br><span class="line">SUB r32, r/m32</span><br></pre></td></tr></table></figure>
-
-<h3 id="AND指令"><a href="#AND指令" class="headerlink" title="AND指令"></a>AND指令</h3><h4 id="作用：将源操作数和目标寄存器的值进行与运算并保存到目标寄存器"><a href="#作用：将源操作数和目标寄存器的值进行与运算并保存到目标寄存器" class="headerlink" title="作用：将源操作数和目标寄存器的值进行与运算并保存到目标寄存器"></a>作用：将源操作数和目标寄存器的值进行与运算并保存到目标寄存器</h4><h4 id="用法-1"><a href="#用法-1" class="headerlink" title="用法:"></a>用法:</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">AND AL, imm8</span><br><span class="line"></span><br><span class="line">AND AX, imm16</span><br><span class="line"></span><br><span class="line">AND EAX, imm32</span><br><span class="line"></span><br><span class="line">AND r/m8, imm8</span><br><span class="line"></span><br><span class="line">AND r/m16,imm16</span><br><span class="line"></span><br><span class="line">AND r/m32,imm32</span><br><span class="line"></span><br><span class="line">AND r/m16, imm8</span><br><span class="line"></span><br><span class="line">AND r/m32, imm8</span><br><span class="line"></span><br><span class="line">AND r/m8, r8</span><br><span class="line"></span><br><span class="line">AND r/m16, r16</span><br><span class="line"></span><br><span class="line">AND r/m32, r32</span><br><span class="line"></span><br><span class="line">AND r8, r/m8</span><br><span class="line"></span><br><span class="line">AND r16, r/m16</span><br><span class="line"></span><br><span class="line">AND r32, r/m32</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="OR指令"><a href="#OR指令" class="headerlink" title="OR指令"></a>OR指令</h3><h4 id="作用：将源操作数和目标寄存器的值进行或运算并保存到目标寄存器"><a href="#作用：将源操作数和目标寄存器的值进行或运算并保存到目标寄存器" class="headerlink" title="作用：将源操作数和目标寄存器的值进行或运算并保存到目标寄存器"></a>作用：将源操作数和目标寄存器的值进行或运算并保存到目标寄存器</h4><h4 id="用法-2"><a href="#用法-2" class="headerlink" title="用法:"></a>用法:</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">OR AL, imm8</span><br><span class="line"></span><br><span class="line">OR AX, imm16</span><br><span class="line"></span><br><span class="line">OR EAX, imm32</span><br><span class="line"></span><br><span class="line">OR r/m8, imm8</span><br><span class="line"></span><br><span class="line">OR r/m16,imm16</span><br><span class="line"></span><br><span class="line">OR r/m32,imm32</span><br><span class="line"></span><br><span class="line">OR r/m16, imm8</span><br><span class="line"></span><br><span class="line">OR r/m32, imm8</span><br><span class="line"></span><br><span class="line">OR r/m8, r8</span><br><span class="line"></span><br><span class="line">OR r/m16, r16</span><br><span class="line"></span><br><span class="line">OR r/m32, r32</span><br><span class="line"></span><br><span class="line">OR r8, r/m8</span><br><span class="line"></span><br><span class="line">OR r16, r/m16</span><br><span class="line"></span><br><span class="line">OR r32, r/m32</span><br></pre></td></tr></table></figure>
-
-<h3 id="XOR指令"><a href="#XOR指令" class="headerlink" title="XOR指令"></a>XOR指令</h3><h4 id="作用：将源操作数和目标寄存器的值进行异或运算并保存到目标寄存器"><a href="#作用：将源操作数和目标寄存器的值进行异或运算并保存到目标寄存器" class="headerlink" title="作用：将源操作数和目标寄存器的值进行异或运算并保存到目标寄存器"></a>作用：将源操作数和目标寄存器的值进行异或运算并保存到目标寄存器</h4><h4 id="用法-3"><a href="#用法-3" class="headerlink" title="用法:"></a>用法:</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">XOR AL, imm8</span><br><span class="line"></span><br><span class="line">XOR AX, imm16</span><br><span class="line"></span><br><span class="line">XOR EAX, imm32</span><br><span class="line"></span><br><span class="line">XOR r/m8, imm8</span><br><span class="line"></span><br><span class="line">XOR r/m16,imm16</span><br><span class="line"></span><br><span class="line">XOR r/m32,imm32</span><br><span class="line"></span><br><span class="line">XOR r/m16, imm8</span><br><span class="line"></span><br><span class="line">XOR r/m32, imm8</span><br><span class="line"></span><br><span class="line">XOR r/m8, r8</span><br><span class="line"></span><br><span class="line">XOR r/m16, r16</span><br><span class="line"></span><br><span class="line">XOR r/m32, r32</span><br><span class="line"></span><br><span class="line">XOR r8, r/m8</span><br><span class="line"></span><br><span class="line">XOR r16, r/m16</span><br><span class="line"></span><br><span class="line">XOR r32, r/m32</span><br></pre></td></tr></table></figure>
-<h3 id="NOT指令"><a href="#NOT指令" class="headerlink" title="NOT指令"></a>NOT指令</h3><h4 id="作用：将目标寄存器的值进行非运算并保存到目标寄存器"><a href="#作用：将目标寄存器的值进行非运算并保存到目标寄存器" class="headerlink" title="作用：将目标寄存器的值进行非运算并保存到目标寄存器"></a>作用：将目标寄存器的值进行非运算并保存到目标寄存器</h4><h4 id="用法-4"><a href="#用法-4" class="headerlink" title="用法:"></a>用法:</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">NOT r/m8</span><br><span class="line"></span><br><span class="line">NOT r/m16</span><br><span class="line"></span><br><span class="line">NOT r/m32</span><br></pre></td></tr></table></figure>
-
-<h3 id="LEA指令"><a href="#LEA指令" class="headerlink" title="LEA指令"></a>LEA指令</h3><h4 id="作用：获取目标内存地址编号并存到指定位置"><a href="#作用：获取目标内存地址编号并存到指定位置" class="headerlink" title="作用：获取目标内存地址编号并存到指定位置"></a>作用：获取目标内存地址编号并存到指定位置</h4><h4 id="用法-5"><a href="#用法-5" class="headerlink" title="用法:"></a>用法:</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">LEA EAX,DWORD PTR DS:[EAX+ECX*4]</span><br><span class="line"></span><br><span class="line">LEA EAX,DWORD PTR DS:[0X13FFC4]</span><br><span class="line"></span><br><span class="line">LEA EAX,DWORD PTR DS:[ESP+8]</span><br></pre></td></tr></table></figure>
-
-<h3 id="PUSH指令"><a href="#PUSH指令" class="headerlink" title="PUSH指令"></a>PUSH指令</h3><h4 id="作用-压栈，将一个数或者寄存器中的值压入堆栈中"><a href="#作用-压栈，将一个数或者寄存器中的值压入堆栈中" class="headerlink" title="作用: 压栈，将一个数或者寄存器中的值压入堆栈中"></a>作用: 压栈，将一个数或者寄存器中的值压入堆栈中</h4><h4 id="用法-6"><a href="#用法-6" class="headerlink" title="用法:"></a>用法:</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">PUSH r32</span><br><span class="line"></span><br><span class="line">PUSH r16</span><br><span class="line"></span><br><span class="line">PUSH m16</span><br><span class="line"></span><br><span class="line">PUSH m32</span><br><span class="line"></span><br><span class="line">PUSH imm8/imm16/imm32</span><br></pre></td></tr></table></figure>
-<h3 id="POP指令"><a href="#POP指令" class="headerlink" title="POP指令"></a>POP指令</h3><h4 id="作用-出栈，将某个内存的zhi值取出放入某个寄存器中"><a href="#作用-出栈，将某个内存的zhi值取出放入某个寄存器中" class="headerlink" title="作用: 出栈，将某个内存的zhi值取出放入某个寄存器中"></a>作用: 出栈，将某个内存的zhi值取出放入某个寄存器中</h4><h4 id="用法-7"><a href="#用法-7" class="headerlink" title="用法:"></a>用法:</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">POP r32</span><br><span class="line">	</span><br><span class="line">POP r16</span><br><span class="line">	</span><br><span class="line">POP m16</span><br><span class="line">	</span><br><span class="line">POP m32</span><br></pre></td></tr></table></figure>
-
-<h2 id="jcc汇编指令"><a href="#jcc汇编指令" class="headerlink" title="jcc汇编指令"></a>jcc汇编指令</h2><blockquote>
-<p>jcc指令的本质是修改EIP寄存器的值</p>
-</blockquote>
-<h3 id="JMP指令"><a href="#JMP指令" class="headerlink" title="JMP指令"></a>JMP指令</h3><h4 id="作用-修改EIP的值"><a href="#作用-修改EIP的值" class="headerlink" title="作用:修改EIP的值"></a>作用:修改EIP的值</h4><h4 id="用法-8"><a href="#用法-8" class="headerlink" title="用法:"></a>用法:</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">				</span><br><span class="line">	MOV EIP,寄存器/立即数   简写为   JMP 寄存器/立即数			</span><br><span class="line">				</span><br><span class="line">```				</span><br><span class="line">### CALL指令			</span><br><span class="line">#### 作用：使EIP(即下一跳的值)修改成某个内存地址,和jmp的区别是，jmp只会直接跳到指定位置，call则会先把下一个汇编指令保存到堆栈中</span><br><span class="line">#### 用法：</span><br></pre></td></tr></table></figure>
-<p>PUSH 地址B            </p>
-<p>MOV EIP,地址A/寄存器            简写为：CALL 地址A/寄存器</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">### RET指令</span><br><span class="line">#### 作用：修改EIP值(和call差不多) 取之前call保存的地址，然后返回。</span><br><span class="line">#### 用法：</span><br><span class="line">```				</span><br><span class="line">LEA ESP,[ESP+4]			</span><br><span class="line">				</span><br><span class="line">MOV EIP，[ESP-4]			简写为：RET</span><br></pre></td></tr></table></figure>
-
-<h3 id="CMP指令"><a href="#CMP指令" class="headerlink" title="CMP指令"></a>CMP指令</h3><h4 id="作用：该指令是比较两个操作数-实际上-它相当于SUB指令-但是相减的结构并不保存到第一个操作数中。-只是根据相减的结果来改变零标志位的-当两个操作数相等的时候-零标志位置1。"><a href="#作用：该指令是比较两个操作数-实际上-它相当于SUB指令-但是相减的结构并不保存到第一个操作数中。-只是根据相减的结果来改变零标志位的-当两个操作数相等的时候-零标志位置1。" class="headerlink" title="作用：该指令是比较两个操作数,实际上,它相当于SUB指令,但是相减的结构并不保存到第一个操作数中。        只是根据相减的结果来改变零标志位的,当两个操作数相等的时候,零标志位置1。"></a>作用：该指令是比较两个操作数,实际上,它相当于SUB指令,但是相减的结构并不保存到第一个操作数中。        只是根据相减的结果来改变零标志位的,当两个操作数相等的时候,零标志位置1。</h4><h4 id="用法：-2"><a href="#用法：-2" class="headerlink" title="用法："></a>用法：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CMP  R/M,R/M/IMM			</span><br></pre></td></tr></table></figure>
-<h3 id="TEST指令"><a href="#TEST指令" class="headerlink" title="TEST指令"></a>TEST指令</h3><h4 id="作用：该指令在一定程序上和CMP指令时类似的-两个数值进行与操作-结果不保存-但是会改变相应标志位"><a href="#作用：该指令在一定程序上和CMP指令时类似的-两个数值进行与操作-结果不保存-但是会改变相应标志位" class="headerlink" title="作用：该指令在一定程序上和CMP指令时类似的,两个数值进行与操作,结果不保存,但是会改变相应标志位."></a>作用：该指令在一定程序上和CMP指令时类似的,两个数值进行与操作,结果不保存,但是会改变相应标志位.</h4><h4 id="用法：-3"><a href="#用法：-3" class="headerlink" title="用法："></a>用法：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">TEST  R/M,R/M/IMM			</span><br><span class="line">			</span><br><span class="line">与的操作表项如下：			</span><br><span class="line">				</span><br><span class="line">1 and 1 = 1			</span><br><span class="line">			</span><br><span class="line">1 and 0 = 0			</span><br><span class="line">			</span><br><span class="line">0 and 1 = 0			</span><br><span class="line">			</span><br><span class="line">0 and 0 = 0			</span><br><span class="line">			</span><br><span class="line">常见用法：用这个指令,可以确定某寄存器是否等于0。			</span><br><span class="line">				</span><br><span class="line">TEST EAX,EAX			观察Z位</span><br><span class="line">				</span><br><span class="line">但是如果EAX的二进制某些位为1的话,那么运算的结果就不为零。			</span><br></pre></td></tr></table></figure>
-
-<h3 id="JE-JZ-指令"><a href="#JE-JZ-指令" class="headerlink" title="JE, JZ 指令"></a>JE, JZ 指令</h3><h4 id="作用：结果为零则跳转-相等时跳转"><a href="#作用：结果为零则跳转-相等时跳转" class="headerlink" title="作用：结果为零则跳转(相等时跳转)"></a>作用：结果为零则跳转(相等时跳转)</h4><h4 id="标志寄存器变化：ZF-1"><a href="#标志寄存器变化：ZF-1" class="headerlink" title="标志寄存器变化：ZF=1"></a>标志寄存器变化：ZF=1</h4><h3 id="JNE-JNZ-指令"><a href="#JNE-JNZ-指令" class="headerlink" title="JNE, JNZ 指令"></a>JNE, JNZ 指令</h3><h4 id="作用：结果不为零则跳转-不相等时跳转"><a href="#作用：结果不为零则跳转-不相等时跳转" class="headerlink" title="作用：结果不为零则跳转(不相等时跳转)"></a>作用：结果不为零则跳转(不相等时跳转)</h4><h4 id="标志寄存器变化：ZF-0"><a href="#标志寄存器变化：ZF-0" class="headerlink" title="标志寄存器变化：ZF=0"></a>标志寄存器变化：ZF=0</h4><h3 id="JS-指令"><a href="#JS-指令" class="headerlink" title="JS 指令"></a>JS 指令</h3><h4 id="作用：结果为负则跳转"><a href="#作用：结果为负则跳转" class="headerlink" title="作用：结果为负则跳转"></a>作用：结果为负则跳转</h4><h4 id="标志寄存器变化：SF-1"><a href="#标志寄存器变化：SF-1" class="headerlink" title="标志寄存器变化：SF=1"></a>标志寄存器变化：SF=1</h4><h3 id="JNS-指令"><a href="#JNS-指令" class="headerlink" title="JNS 指令"></a>JNS 指令</h3><h4 id="作用结果为非负则跳转"><a href="#作用结果为非负则跳转" class="headerlink" title="作用结果为非负则跳转"></a>作用结果为非负则跳转</h4><h4 id="标志寄存器变化：SF-0"><a href="#标志寄存器变化：SF-0" class="headerlink" title="标志寄存器变化：SF=0"></a>标志寄存器变化：SF=0</h4><h3 id="JP-JPE-指令"><a href="#JP-JPE-指令" class="headerlink" title="JP, JPE 指令"></a>JP, JPE 指令</h3><h4 id="作用：结果中1的个数为偶数则跳转"><a href="#作用：结果中1的个数为偶数则跳转" class="headerlink" title="作用：结果中1的个数为偶数则跳转"></a>作用：结果中1的个数为偶数则跳转</h4><h4 id="标志寄存器变化-PF-1"><a href="#标志寄存器变化-PF-1" class="headerlink" title="标志寄存器变化:PF=1"></a>标志寄存器变化:PF=1</h4><h3 id="JNP-JPO-指令"><a href="#JNP-JPO-指令" class="headerlink" title="JNP, JPO  指令"></a>JNP, JPO  指令</h3><h4 id="作用：结果中1的个数为偶数则跳转-1"><a href="#作用：结果中1的个数为偶数则跳转-1" class="headerlink" title="作用：结果中1的个数为偶数则跳转"></a>作用：结果中1的个数为偶数则跳转</h4><h4 id="标志寄存器变化：PF-0"><a href="#标志寄存器变化：PF-0" class="headerlink" title="标志寄存器变化：PF=0"></a>标志寄存器变化：PF=0</h4><h3 id="JO-指令"><a href="#JO-指令" class="headerlink" title="JO 指令"></a>JO 指令</h3><h4 id="作用：结果溢出了则跳转"><a href="#作用：结果溢出了则跳转" class="headerlink" title="作用：结果溢出了则跳转"></a>作用：结果溢出了则跳转</h4><h4 id="标志寄存器变化：OF-1"><a href="#标志寄存器变化：OF-1" class="headerlink" title="标志寄存器变化：OF=1"></a>标志寄存器变化：OF=1</h4><h3 id="JNO-指令"><a href="#JNO-指令" class="headerlink" title="JNO  指令"></a>JNO  指令</h3><h4 id="作用：结果没有溢出则跳转"><a href="#作用：结果没有溢出则跳转" class="headerlink" title="作用：结果没有溢出则跳转"></a>作用：结果没有溢出则跳转</h4><h4 id="标志寄存器变化：OF-0"><a href="#标志寄存器变化：OF-0" class="headerlink" title="标志寄存器变化：OF=0"></a>标志寄存器变化：OF=0</h4><h3 id="JB-JNAE-指令"><a href="#JB-JNAE-指令" class="headerlink" title="JB, JNAE  指令"></a>JB, JNAE  指令</h3><h4 id="作用：小于则跳转-无符号数"><a href="#作用：小于则跳转-无符号数" class="headerlink" title="作用：小于则跳转 (无符号数)"></a>作用：小于则跳转 (无符号数)</h4><h4 id="标志寄存器变化：CF-1"><a href="#标志寄存器变化：CF-1" class="headerlink" title="标志寄存器变化：CF=1"></a>标志寄存器变化：CF=1</h4><h3 id="JNB-JAE-指令"><a href="#JNB-JAE-指令" class="headerlink" title="JNB, JAE  指令"></a>JNB, JAE  指令</h3><h4 id="作用：大于等于则跳转-无符号数"><a href="#作用：大于等于则跳转-无符号数" class="headerlink" title="作用：大于等于则跳转 (无符号数)"></a>作用：大于等于则跳转 (无符号数)</h4><h4 id="标志寄存器变化：CF-0"><a href="#标志寄存器变化：CF-0" class="headerlink" title="标志寄存器变化：CF=0"></a>标志寄存器变化：CF=0</h4><h3 id="JBE-JNA-指令"><a href="#JBE-JNA-指令" class="headerlink" title="JBE, JNA  指令"></a>JBE, JNA  指令</h3><h4 id="作用：小于等于则跳转-无符号数"><a href="#作用：小于等于则跳转-无符号数" class="headerlink" title="作用：小于等于则跳转 (无符号数)"></a>作用：小于等于则跳转 (无符号数)</h4><h4 id="标志寄存器变化：CF-1-or-ZF-1"><a href="#标志寄存器变化：CF-1-or-ZF-1" class="headerlink" title="标志寄存器变化：CF=1 or ZF=1"></a>标志寄存器变化：CF=1 or ZF=1</h4><h3 id="JNBE-JA-指令"><a href="#JNBE-JA-指令" class="headerlink" title="JNBE, JA  指令"></a>JNBE, JA  指令</h3><h4 id="作用：大于则跳转-无符号数"><a href="#作用：大于则跳转-无符号数" class="headerlink" title="作用：大于则跳转(无符号数)"></a>作用：大于则跳转(无符号数)</h4><h4 id="标志寄存器变化：CF-0-and-ZF-0"><a href="#标志寄存器变化：CF-0-and-ZF-0" class="headerlink" title="标志寄存器变化：CF=0 and ZF=0"></a>标志寄存器变化：CF=0 and ZF=0</h4><h3 id="JL-JNGE-指令"><a href="#JL-JNGE-指令" class="headerlink" title="JL, JNGE  指令"></a>JL, JNGE  指令</h3><h4 id="作用：小于则跳转-有符号数"><a href="#作用：小于则跳转-有符号数" class="headerlink" title="作用：小于则跳转 (有符号数)"></a>作用：小于则跳转 (有符号数)</h4><h4 id="标志寄存器变化：SF≠-OF"><a href="#标志寄存器变化：SF≠-OF" class="headerlink" title="标志寄存器变化：SF≠ OF"></a>标志寄存器变化：SF≠ OF</h4><h3 id="JNL-JGE-指令"><a href="#JNL-JGE-指令" class="headerlink" title="JNL, JGE  指令"></a>JNL, JGE  指令</h3><h4 id="作用：大于等于则跳转-有符号数"><a href="#作用：大于等于则跳转-有符号数" class="headerlink" title="作用：大于等于则跳转 (有符号数)"></a>作用：大于等于则跳转 (有符号数)</h4><h4 id="标志寄存器变化：SF-OF"><a href="#标志寄存器变化：SF-OF" class="headerlink" title="标志寄存器变化：SF=OF"></a>标志寄存器变化：SF=OF</h4><h3 id="JLE-JNG-指令"><a href="#JLE-JNG-指令" class="headerlink" title="JLE, JNG  指令"></a>JLE, JNG  指令</h3><h4 id="作用：小于等于则跳转-有符号数"><a href="#作用：小于等于则跳转-有符号数" class="headerlink" title="作用：小于等于则跳转 (有符号数)"></a>作用：小于等于则跳转 (有符号数)</h4><h4 id="标志寄存器变化：ZF-1-or-SF≠-OF"><a href="#标志寄存器变化：ZF-1-or-SF≠-OF" class="headerlink" title="标志寄存器变化：ZF=1 or SF≠ OF"></a>标志寄存器变化：ZF=1 or SF≠ OF</h4><h3 id="JNLE-JG-指令"><a href="#JNLE-JG-指令" class="headerlink" title="JNLE, JG  指令"></a>JNLE, JG  指令</h3><h4 id="作用：大于则跳转-有符号数"><a href="#作用：大于则跳转-有符号数" class="headerlink" title="作用：大于则跳转(有符号数)"></a>作用：大于则跳转(有符号数)</h4><h4 id="标志寄存器变化：ZF-0-and-SF-OF"><a href="#标志寄存器变化：ZF-0-and-SF-OF" class="headerlink" title="标志寄存器变化：ZF=0 and SF=OF"></a>标志寄存器变化：ZF=0 and SF=OF</h4>
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2021/12/12/%E6%BB%B4%E6%B0%B4%E9%80%86%E5%90%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(%E4%B8%80)/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -715,7 +515,7 @@
             
               <div class="site-state-item site-state-posts">
               
-                <a href="/archives/%20%7C%7C%20archive">
+                <a href="/archives/%7C%7Carchive">
               
                   <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">posts</span>
