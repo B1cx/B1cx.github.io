@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Psexec 工具原理分析前言面试的时候正好遇到了，记录一下，之后也会总结分析一些工具的原理。 工具简介Psexec是sysinternals中的一款强大工具，Sysinternals 之前为Winternals公司提供的免费工具，Winternals原本是一间主力产品为系统复原与资料保护的公司，为了解决工程师平常在工作上遇到的各种问题，便开发出许多小工具。之后他们将这些工具集合起来称为Sysin">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Psexec执行过程">
+<meta property="og:url" content="http://example.com/2021/12/20/Psexec%E6%89%A7%E8%A1%8C%E8%BF%87%E7%A8%8B/index.html">
+<meta property="og:site_name" content="Blcx">
+<meta property="og:description" content="Psexec 工具原理分析前言面试的时候正好遇到了，记录一下，之后也会总结分析一些工具的原理。 工具简介Psexec是sysinternals中的一款强大工具，Sysinternals 之前为Winternals公司提供的免费工具，Winternals原本是一间主力产品为系统复原与资料保护的公司，为了解决工程师平常在工作上遇到的各种问题，便开发出许多小工具。之后他们将这些工具集合起来称为Sysin">
+<meta property="og:locale">
+<meta property="og:image" content="https://blcx.oss-cn-shanghai.aliyuncs.com//blog/20211220005316.png">
+<meta property="og:image" content="https://blcx.oss-cn-shanghai.aliyuncs.com//blog/20211220005728.png">
+<meta property="og:image" content="https://blcx.oss-cn-shanghai.aliyuncs.com//blog/20211220005823.png">
+<meta property="og:image" content="https://blcx.oss-cn-shanghai.aliyuncs.com//blog/20211220011516.png">
+<meta property="og:image" content="https://blcx.oss-cn-shanghai.aliyuncs.com//blog/20211220011645.png">
+<meta property="og:image" content="https://blcx.oss-cn-shanghai.aliyuncs.com//blog/20211220011714.png">
+<meta property="og:image" content="https://blcx.oss-cn-shanghai.aliyuncs.com//blog/20211220014503.png">
+<meta property="og:image" content="https://blcx.oss-cn-shanghai.aliyuncs.com//blog/20211220015133.png">
+<meta property="og:image" content="https://blcx.oss-cn-shanghai.aliyuncs.com//blog/20211220015434.png">
+<meta property="og:image" content="https://blcx.oss-cn-shanghai.aliyuncs.com//blog/20211220015735.png">
+<meta property="og:image" content="https://blcx.oss-cn-shanghai.aliyuncs.com//blog/20211220020615.png">
+<meta property="article:published_time" content="2021-12-19T18:16:19.000Z">
+<meta property="article:modified_time" content="2021-12-19T18:17:52.229Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://blcx.oss-cn-shanghai.aliyuncs.com//blog/20211220005316.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://example.com/2021/12/20/Psexec执行过程/"/>
+
+
+
+
+
+  <title>Psexec执行过程 | Blcx</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Blcx</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/12/20/Psexec%E6%89%A7%E8%A1%8C%E8%BF%87%E7%A8%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blcx">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Psexec执行过程</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-12-20T02:16:19+08:00">
+                2021-12-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Psexec-工具原理分析"><a href="#Psexec-工具原理分析" class="headerlink" title="Psexec 工具原理分析"></a>Psexec 工具原理分析</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>面试的时候正好遇到了，记录一下，之后也会总结分析一些工具的原理。</p>
+<h2 id="工具简介"><a href="#工具简介" class="headerlink" title="工具简介"></a>工具简介</h2><p>Psexec是sysinternals中的一款强大工具，Sysinternals 之前为Winternals公司提供的免费工具，Winternals原本是一间主力产品为系统复原与资料保护的公司，为了解决工程师平常在工作上遇到的各种问题，便开发出许多小工具。之后他们将这些工具集合起来称为Sysinternals,并放在网络供人免费下载。</p>
+<p>在渗透中Psexec常用来进行横向和提权</p>
+<span id="more"></span>
+<h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><p>以system权限启动某个应用</p>
+<blockquote>
+<p>psexec -s -i regedit.exe  </p>
+</blockquote>
+<p>-s 代表system权限<br>-i 交互式运行</p>
+<p>执行远程进程的前提条件是对方机器必须开启ipc$，以及admin$</p>
+<p>反弹cmd<br>(可先建立ipc连接再使用psexec，无需输入密码</p>
+<blockquote>
+<p>net use \IP /u:域名称\域账号 密码<br>psexec.exe \192.168.10.2 -s cmd.exe -acceptcula 反弹cmd<br>.\PsExec.exe \192.168.10.201 -u de1ay\Administrator -p 1qaz@WSX -s cmd.exe -acceptcula 或者直接反弹cmd</p>
+</blockquote>
+<h2 id="日志角度分析过程"><a href="#日志角度分析过程" class="headerlink" title="日志角度分析过程"></a>日志角度分析过程</h2><p>环境：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">windows 10              ip: 192.168.216.131 掩码: 255.255.255.0  网关：192.168.216.2</span><br><span class="line">windows server 2008 r2  ip: 192.168.216.132 掩码：255.255.255.0  网关：192.168.216.2</span><br></pre></td></tr></table></figure>
+<p>对windows server 使用psexec</p>
+<p><img src="https://blcx.oss-cn-shanghai.aliyuncs.com//blog/20211220005316.png" alt="20211220005316"></p>
+<p>在windows server端查看安全日志</p>
+<p><img src="https://blcx.oss-cn-shanghai.aliyuncs.com//blog/20211220005728.png" alt="20211220005728"></p>
+<p>并且可以看到登录进程名和身份验证的数据包类型</p>
+<p><img src="https://blcx.oss-cn-shanghai.aliyuncs.com//blog/20211220005823.png" alt="20211220005823"></p>
+<p>从系统日志中还看到了PSEXESVC.exe程序的释放</p>
+<p><img src="https://blcx.oss-cn-shanghai.aliyuncs.com//blog/20211220011516.png" alt="20211220011516"></p>
+<p>接下来报告程序处于运行中</p>
+<p><img src="https://blcx.oss-cn-shanghai.aliyuncs.com//blog/20211220011645.png" alt="20211220011645"></p>
+<p>在执行exit断开连接之后该服务停止运行</p>
+<p><img src="https://blcx.oss-cn-shanghai.aliyuncs.com//blog/20211220011714.png" alt="20211220011714"></p>
+<p>从以上流程看来，psexec的具体执行流程为</p>
+<ul>
+<li>进行Windows认证</li>
+<li>然后释放PSEXESVC.exe并启动</li>
+<li>当psexec执行exit退出命令行之后会停止运行</li>
+</ul>
+<h2 id="数据包角度分析具体流程"><a href="#数据包角度分析具体流程" class="headerlink" title="数据包角度分析具体流程"></a>数据包角度分析具体流程</h2><p>用wireshark捕获了从连接到exit退出的过程</p>
+<p><img src="https://blcx.oss-cn-shanghai.aliyuncs.com//blog/20211220014503.png" alt="20211220014503"></p>
+<ul>
+<li>首先通过提供的凭证，通过SMBV2会话进行身份验证</li>
+<li>通过访问共享文件夹ADMIN$,释放PSEXESVC.exe，在tcp流中也可以看到MZ头</li>
+</ul>
+<p><img src="https://blcx.oss-cn-shanghai.aliyuncs.com//blog/20211220015133.png" alt="20211220015133"></p>
+<ul>
+<li>传输完成后,会调用OpenServiceManager安装服务”PSEXESVC”<br><img src="https://blcx.oss-cn-shanghai.aliyuncs.com//blog/20211220015434.png" alt="20211220015434"></li>
+</ul>
+<ul>
+<li><p>PSEXESVC服务启动后会创建命名管道重定向输入(stdin)输出(stdout,stderr)<br><img src="https://blcx.oss-cn-shanghai.aliyuncs.com//blog/20211220015735.png" alt="20211220015735"></p>
+</li>
+<li><p>最后在exit时，停止服务并删除</p>
+</li>
+</ul>
+<p><img src="https://blcx.oss-cn-shanghai.aliyuncs.com//blog/20211220020615.png" alt="20211220020615"></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>使用psexec的前提</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">目标的SMB服务需开放</span><br><span class="line">能获取目标机器用户的明文密码或NTLM哈希</span><br><span class="line">ipc用户共享文件夹权限必须能写入文件</span><br><span class="line">能调用OpenServiceManager创建服务并能启动</span><br></pre></td></tr></table></figure>
+
+<p>注意点</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">如果使用的是 Sysinternal 的 PsExec，它是会将 PSEXESVC.exe 复制到 ADMIN$，因此是具备访问它的权限；</span><br><span class="line">PSEXESVC 服务将会安装在远程系统中，此时将会生成 Event 4697、7045 这2种事件日志；</span><br><span class="line">PsExec 2.1版本之后，不再是明文传输。</span><br></pre></td></tr></table></figure>
+
+<p>防护措施</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">对内网机器进行时间监控，如写入文件，创建服务等</span><br><span class="line">用户机器采用密码复杂度高的密码</span><br><span class="line">对事件id 7045、4697、4624、4648进行监控和采集</span><br></pre></td></tr></table></figure>
+
+<h2 id="Refer"><a href="#Refer" class="headerlink" title="Refer"></a>Refer</h2><p><a target="_blank" rel="noopener" href="https://payloads.online/archivers/2020-04-02/1/">如何实现一个Psexec</a></p>
+<p><a target="_blank" rel="noopener" href="https://rcoil.me/2019/08/%E3%80%90%E7%9F%A5%E8%AF%86%E5%9B%9E%E9%A1%BE%E3%80%91%E6%B7%B1%E5%85%A5%E4%BA%86%E8%A7%A3%20PsExec/">【知识回顾】深入了解 PsExec </a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/12/12/webshell%E7%9A%84%E5%8F%98%E5%BD%A2%E4%B8%8E%E6%80%9D%E8%80%83/" rel="next" title="webshell的变形与思考">
+                <i class="fa fa-chevron-left"></i> webshell的变形与思考
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Psexec-%E5%B7%A5%E5%85%B7%E5%8E%9F%E7%90%86%E5%88%86%E6%9E%90"><span class="nav-number">1.</span> <span class="nav-text">Psexec 工具原理分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B7%A5%E5%85%B7%E7%AE%80%E4%BB%8B"><span class="nav-number">1.2.</span> <span class="nav-text">工具简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%A8%E6%B3%95"><span class="nav-number">1.3.</span> <span class="nav-text">用法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%A5%E5%BF%97%E8%A7%92%E5%BA%A6%E5%88%86%E6%9E%90%E8%BF%87%E7%A8%8B"><span class="nav-number">1.4.</span> <span class="nav-text">日志角度分析过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%8C%85%E8%A7%92%E5%BA%A6%E5%88%86%E6%9E%90%E5%85%B7%E4%BD%93%E6%B5%81%E7%A8%8B"><span class="nav-number">1.5.</span> <span class="nav-text">数据包角度分析具体流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">1.6.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Refer"><span class="nav-number">1.7.</span> <span class="nav-text">Refer</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder"></span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
